@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  remote_user: predator
+  connection: local
+  become: False
+  roles:
+    - ec2_cloud
+  environment:
+    AWS_ACCESS_KEY_ID=''
+    AWS_SECRET_ACCESS_KEY=''  

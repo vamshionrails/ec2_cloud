@@ -1,0 +1,10 @@
+
+# - include: pre_tasks.yml
+
+# - include: security_group.yml
+
+# - include: iam.yml
+
+# - include: launch_template.yml
+
+- include: cloudformation.yml

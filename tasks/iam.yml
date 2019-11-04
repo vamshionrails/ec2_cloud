@@ -1,0 +1,33 @@
+---
+# Create IAM User
+- name: Create two new IAM users with API keys
+  iam:
+    iam_type: user
+    name: "{{ item }}"
+    state: present
+    password: "rayaru"
+    access_key_state: create
+  loop:
+    - vamshi
+
+# Create IAM Group
+- name: Create IAM group
+  iam:
+    iam_type: group
+    name: "{{ item }}"
+    state: present    
+  loop:
+    - vamshi-group
+  register: new_groups
+
+# Add user to the IAM group
+
+- name: Add User to group
+  iam:
+    iam_type: user
+    name: vamshi
+    state: update
+    groups: "{{ item.group_name }}"
+  loop: "{{ new_groups.results }}"
+
+
